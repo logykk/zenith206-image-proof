@@ -1,6 +1,9 @@
 services:
   app:
-    image: ghcr.io/logykk/zenith206-image-proof:zenith-pending
+    image: "ghcr.io/logykk/zenith206-image-proof@sha256:cd86b1b29e1a21dad64170bd9f6913aa8fa4b4b988a8f3262095337d28400d1a"
+    x-zenith-image:
+      source: "ghcr.io/logykk/zenith206-image-proof@sha256:cd86b1b29e1a21dad64170bd9f6913aa8fa4b4b988a8f3262095337d28400d1a"
+      last_pin: "ghcr.io/logykk/zenith206-image-proof@sha256:cd86b1b29e1a21dad64170bd9f6913aa8fa4b4b988a8f3262095337d28400d1a"
     environment:
       DATA_DIR: /data
       PORT: "8080"

@@ -75,7 +75,7 @@ jobs:
       - name: Resolve public images and request Zenith review
         env:
           REPO_TOKEN: ${{ github.token }}
-          APP_ORIGIN: "http://app.zenith.localhost:3000"
+          APP_ORIGIN: "https://integrated-emma-packages-belief.trycloudflare.com"
           BUILT_SERVICE: "app"
           BUILT_PENDING_IMAGE: "ghcr.io/logykk/zenith206-image-proof:zenith-pending"
           BUILT_IMAGE: ${{ needs.build.outputs.digest }}

@@ -1,0 +1,41 @@
+services:
+  app:
+    image: ghcr.io/logykk/zenith206-image-proof:zenith-pending
+    environment:
+      DATA_DIR: /data
+      PORT: "8080"
+    volumes:
+      - data:/data
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health', timeout=2).read()"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+volumes:
+  data: {}
+x-zenith:
+  catalog:
+    name: Zenith Image Proof
+    description: Self-hosted web notes app for Zenith image-build verification using SQLite storage.
+    authors:
+      - ZENITH-206 fixture authors
+    tags:
+      - notes
+      - productivity
+      - verification
+    source: https://github.com/logykk/zenith206-image-proof
+    license: MIT
+  expose:
+    - service: app
+      port: 8080
+      web: true
+  storage:
+    data:
+      volume: data
+      label: Notes data
+      description: Persistent SQLite database and application data directory.
+      public: false
+  env: {}
